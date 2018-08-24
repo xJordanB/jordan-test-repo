@@ -1,30 +1,22 @@
 pipeline {
     agent any
     parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        string(name: 'Subnet', defaultValue: '10.1.1.0/24', description: 'Please specify the subnet which you wish to deploy, within the format of x.x.x.x/xx')
 
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+        booleanParam(name: 'Deploy Immediately?', defaultValue: true, description: 'Toggle this value to control when the subnet is deployed to the fabric')
 
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+        choice(name: 'Subnet Type', choices: ['Fabric Only', 'External Subnet'], description: 'Please define the type of subnet you wish to deploy')
 
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Please enter your password in order to authorise deployment to the fabric')
 
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-
-        file(name: "FILE", description: "Choose a file to upload")
     }
     stages {
-        stage('Example') {
+        stage('Deploy New Subnet') {
             steps {
-                echo "Hello ${params.PERSON}"
-
-                echo "Biography: ${params.BIOGRAPHY}"
-
-                echo "Toggle: ${params.TOGGLE}"
-
-                echo "Choice: ${params.CHOICE}"
-
-                echo "Password: ${params.PASSWORD}"
+                echo "Subnet specified is...${params.Subnet}"
+                echo "Deploy Immediately is...${params.Deploy Immediately?}"
+                echo "Subnet Type is...${params.Subnet Type}"
+                echo "Password value is...${params.PASSWORD}"
             }
         }
     }
