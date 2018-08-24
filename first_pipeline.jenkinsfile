@@ -3,9 +3,9 @@ pipeline {
     parameters {
         string(name: 'Subnet', defaultValue: '10.1.1.0/24', description: 'Please specify the subnet which you wish to deploy, within the format of x.x.x.x/xx')
 
-        booleanParam(name: 'Deploy Immediately?', defaultValue: true, description: 'Toggle this value to control when the subnet is deployed to the fabric')
+        booleanParam(name: 'Deploy_Immediately', defaultValue: true, description: 'Toggle this value to control when the subnet is deployed to the fabric')
 
-        choice(name: 'Subnet Type', choices: ['Fabric Only', 'External Subnet'], description: 'Please define the type of subnet you wish to deploy')
+        choice(name: 'Subnet_Type', choices: ['Fabric Only', 'External Subnet'], description: 'Please define the type of subnet you wish to deploy')
 
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Please enter your password in order to authorise deployment to the fabric')
 
@@ -14,8 +14,8 @@ pipeline {
         stage('Deploy New Subnet') {
             steps {
                 echo "Subnet specified is...${params.Subnet}"
-                echo "Deploy Immediately is...${params.Deploy Immediately?}"
-                echo "Subnet Type is...${params.Subnet Type}"
+                echo "Deploy Immediately is...${params.Deploy_Immediately}"
+                echo "Subnet Type is...${params.Subnet_Type}"
                 echo "Password value is...${params.PASSWORD}"
             }
         }
