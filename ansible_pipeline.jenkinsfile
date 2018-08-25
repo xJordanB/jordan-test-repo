@@ -8,7 +8,7 @@ pipeline {
             steps {
                 sh "sudo -u ansible_adm -s"
                 sh "whoami"
-                sh "ansible all -s -m yum -a "name=httpd state=present"
+                sh 'ansible all -s -m yum -a "name=httpd state=present"'
             }
         }
     }
