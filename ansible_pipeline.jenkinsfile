@@ -6,6 +6,7 @@ pipeline {
     stages {
         stage('Deploy New Subnet') {
             steps {
+                sh "su ansible_adm"
                 sh "whoami"
             }
         }
