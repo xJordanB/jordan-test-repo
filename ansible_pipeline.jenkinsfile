@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'PACKAGE', defaultValue: 'None', description: 'Please specify the package which you wish to deploy.')
+    }
+    stages {
+        stage('Deploy New Subnet') {
+            steps {
+                su ansible_adm
+                whoami
+            }
+        }
+    }
+}
