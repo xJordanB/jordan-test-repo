@@ -7,6 +7,7 @@ pipeline {
         stage('Deploy New Subnet') {
             steps {
                 sh 'whoami'
+                sh 'ansible all -s -m yum -a "name={params.PACKAGE} state=present"'
             }
         }
     }
