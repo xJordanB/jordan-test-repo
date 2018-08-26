@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Deploy New Subnet') {
             steps {
-                sh 'sudo -u ansible_adm -s && whoami && ansible all -s -m yum -a "name=httpd state=present"' 
+                sh 'whoami'
             }
         }
     }
